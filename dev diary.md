@@ -81,6 +81,20 @@ I'm back and I've got a new microservice. I would rate it "ez-pz". This service 
 
 Before I get ahead of myself, I'll make a few things configurable like the redis connection.
 
+## 1/23/2025 Part 2
+I got things in a good state on the docker side.
+
+I am looking in to websockets and seeing some interesting things out there. There's a SaaS out there called Pusher, which is a complete ripoff, as all SaaS is, but the idea is interesting. Hosting a dedicated websocket server that can scale to specifically address a potential bottleneck with websockets is convincing. The architecture I'm used to involves a BFF where the backend hosts a websocket server for its frontend, which means:
+- N number of MFEs, N number of websocket connections
+- The backend cannot scale independently of the websocket functionality, they are coupled. I don't know what a reasonable number of websocket connections is for a single server to handle, but the number seems surprisingly low. You might end up deploying 10 copies of an HTTP API just to get 10 copies of your websocket server running.
+- Separation of Concerns issue as a backend service needs to reconcile data processing with managing websocket connections.
+
+I am specifically looking at http://docs.socketi.app which is a self-hosted websocket server that's fully compatible with "Pusher Apps" (they use the same javascript client code) and can be connected to Redis.
+
+I would then look at my backend services as solely responsible for data processing and/or HTTP APIs.
+
+
+
 # Core Tools Used
 - Fastify: An express-like javascript backend with a large community. It's fast. It has a nice module plugin and routing system and there's really not much to learn.
 - dotenv: For configuring environment variables
