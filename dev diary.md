@@ -117,12 +117,18 @@ Pros:
 - Better Separation of Concerns, fewer moving parts. Business logic is not munged with frontend state management concerns.
 - Component Library Monorepo is more viable. I could not figure out how to do this with collocated BFFs
 
+Something built with Socketi and Svelte: https://github.com/syntaxlexx/sveltekit-soketi-fastify-prisma-demo/blob/main/backend/server.js
 
+Socketi documentation https://docs.soketi.app
 
 # Core Tools Used
 ## Infrastructure
+I'm calling it the NERDS stack
+- Node
+- (E)NGINX
+- Redis
 - Docker
-- Redis, Redis Insights
+- Svelte
 
 ## Service Libraries
 - Fastify: An express-like javascript backend with a large community. It's fast. It has a nice module plugin and routing system and there's really not much to learn.
@@ -149,15 +155,26 @@ Copy in the base redis plugin
 
 ## Installation
 install fastify-cli with npm
+
 `npm install fastify-cli --global`
 
 ## Generating a new project
 `fastify generate . --lang=ts --esm`
+
 This generates a new fastify project configured for Typescript and ESM module imports (import Thing from 'path')
 
 ## Routes
 Similar to Express but a bit more readable
 Structure of routes is based on the file system
 
-
 ## Creating a plugin
+Is easy
+
+# Svelte and SvelteKit
+
+## Installation
+None wtf?
+
+## Generating a new project
+`npx sv create .`
+
