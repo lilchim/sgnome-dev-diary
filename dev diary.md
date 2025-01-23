@@ -120,6 +120,11 @@ Pros:
 
 
 # Core Tools Used
+## Infrastructure
+- Docker
+- Redis, Redis Insights
+
+## Service Libraries
 - Fastify: An express-like javascript backend with a large community. It's fast. It has a nice module plugin and routing system and there's really not much to learn.
 - dotenv: For configuring environment variables
 - ioredis: I am using Redis as the broker and database. Ioredis is the official javascript node client.
