@@ -94,6 +94,10 @@ I am specifically looking at http://docs.socketi.app which is a self-hosted webs
 I would then look at my backend services as solely responsible for data processing and/or HTTP APIs.
 ![Before and After Architecture](BFFMFE.drawio.svg)
 
+The interesting thing here is the backend and frontend services are not really coupled at all. If a backend hosted an HTTP API for it's frontend, then sure. They no longer have the websocket in commmon, they now have distinct concerns. The backend, at least the style of backend we typically produce, would be an independent service that basically lives in the redis world, transforming data, fetching data, aggregating data. It's not responsible for sending those results to any particular client, it just lives in redis world. The frontend becomes a self-sufficient client with its own authenticated and secure connection to a websocket server that will asynchronously provide it with the data that that frontend needs, but it isn't sure where it came from.
+
+It makes me a little nervous to deviate this way from what we call BFF but it's very interesting and I can see the benefits.
+
 
 
 # Core Tools Used
