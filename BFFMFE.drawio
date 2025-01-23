@@ -1,9 +1,51 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 OPR/114.0.0.0" version="26.0.7">
   <diagram name="Page-1" id="JrHGbw5wrGTDwO9zrMgq">
-    <mxGraphModel>
+    <mxGraphModel dx="914" dy="874" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="EGsIOJKJrErUgEYyKQrW-2" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="60" y="130" width="390" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="EGsIOJKJrErUgEYyKQrW-3" value="Redis" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="420" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EGsIOJKJrErUgEYyKQrW-5" value="Backend" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="350" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EGsIOJKJrErUgEYyKQrW-4" value="Hosted WSS" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="340" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="EGsIOJKJrErUgEYyKQrW-6" value="Frontend" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="210" width="290" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EGsIOJKJrErUgEYyKQrW-7" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="EGsIOJKJrErUgEYyKQrW-4" target="EGsIOJKJrErUgEYyKQrW-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="470" as="sourcePoint" />
+            <mxPoint x="390" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EGsIOJKJrErUgEYyKQrW-8" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="480" y="130" width="390" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="EGsIOJKJrErUgEYyKQrW-9" value="Redis" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="420" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EGsIOJKJrErUgEYyKQrW-10" value="Backend" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="350" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EGsIOJKJrErUgEYyKQrW-12" value="Frontend" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="210" width="290" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EGsIOJKJrErUgEYyKQrW-14" value="WSS" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="350" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EGsIOJKJrErUgEYyKQrW-16" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0.718;exitY=0.538;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="EGsIOJKJrErUgEYyKQrW-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="710" y="330" as="sourcePoint" />
+            <mxPoint x="760" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
