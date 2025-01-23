@@ -106,6 +106,7 @@ Copy in the base redis plugin
 
 ## Installation
 install fastify-cli with npm
+`npm install fastify-cli --global`
 
 ## Generating a new project
 `fastify generate . --lang=ts --esm`
