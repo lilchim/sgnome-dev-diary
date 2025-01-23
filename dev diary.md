@@ -92,6 +92,7 @@ I am looking in to websockets and seeing some interesting things out there. Ther
 I am specifically looking at http://docs.socketi.app which is a self-hosted websocket server that's fully compatible with "Pusher Apps" (they use the same javascript client code) and can be connected to Redis.
 
 I would then look at my backend services as solely responsible for data processing and/or HTTP APIs.
+(Before and After Architecture([BFFMFE.drawio.svg]
 
 
 
