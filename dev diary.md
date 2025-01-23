@@ -89,14 +89,33 @@ I am looking in to websockets and seeing some interesting things out there. Ther
 - The backend cannot scale independently of the websocket functionality, they are coupled. I don't know what a reasonable number of websocket connections is for a single server to handle, but the number seems surprisingly low. You might end up deploying 10 copies of an HTTP API just to get 10 copies of your websocket server running.
 - Separation of Concerns issue as a backend service needs to reconcile data processing with managing websocket connections.
 
-I am specifically looking at http://docs.socketi.app which is a self-hosted websocket server that's fully compatible with "Pusher Apps" (they use the same javascript client code) and can be connected to Redis.
+I am specifically looking at http://docs.socketi.app which is a self-hosted websocket server that's fully compatible with "Pusher Apps" (they use the same client code) and can be connected to Redis.
 
-I would then look at my backend services as solely responsible for data processing and/or HTTP APIs.
+I would then look at my backend services as solely responsible for things like data processing, aggregation, authentication, and/or HTTP APIs.
 ![Before and After Architecture](BFFMFE.drawio.svg)
 
-The interesting thing here is the backend and frontend services are not really coupled at all. If a backend hosted an HTTP API for it's frontend, then sure. They no longer have the websocket in commmon, they now have distinct concerns. The backend, at least the style of backend we typically produce, would be an independent service that basically lives in the redis world, transforming data, fetching data, aggregating data. It's not responsible for sending those results to any particular client, it just lives in redis world. The frontend becomes a self-sufficient client with its own authenticated and secure connection to a websocket server that will asynchronously provide it with the data that that frontend needs, but it isn't sure where it came from.
+The interesting thing here is the backend and frontend services are not really coupled at all. If a backend hosted an HTTP API for it's frontend, and it was designed specifically to mee the needs of that frontend, then sure. They no longer have the websocket in commmon, they now have distinct concerns. The backend, at least the style of backend we typically produce, would be an independent service that basically lives in the redis world, transforming data, fetching data, aggregating data. It's not responsible for sending those results to any particular client, it just lives in redis world. The frontend becomes a self-sufficient client with its own authenticated and secure connection to a websocket server that will asynchronously provide it with the data that that frontend needs, but it isn't sure where it came from.
 
 It makes me a little nervous to deviate this way from what we call BFF but it's very interesting and I can see the benefits.
+
+This idea is also clearing up some confusion I've had about how to structure the MFEs. My initial thought was to somehow smash Fastify and Svelte into one report and take the same approach that we do at work. A service folder and a web app folder that are collocated and built together. Problem is there's SvelteKit which seems convenient, but a little redundant, but also provides some functionality that fastify wouldn't and shouldn't   Routing of the frontend as an example, Fastify has nothing to do with that but Svelte doesn't solve it without SvelteKit or another routing dependency. I am trying to use as few tools as possible.
+
+I have seen some examples of SvelteKit and Fastify working together, it's definitely doable, but I think I'd just make a huge mess instead of establishing a repeatable pattern.
+
+Some Pros and Cons of this new approach
+
+Cons:
+- I doubt Socketi is on Ironbank ( I just checked, it's not)
+- No backend-guarantee if frontends are not deployed with their backend.
+- A fairly significant deviation from the current approach.
+- No guaranteed frontend with a backend. Ironic because having a frontend with every backend is a common complaint, but it does promote status style UIs that could be useful for things like admin dashboards.
+
+
+Pros:
+- Should be better for MFEs, easier to package up a frontend to be served via module federation with softer dependencies.
+- Simple to implement alternative, additional, or conditional providers for frontend data by swapping out the backend producer of that data.
+- Better Separation of Concerns, fewer moving parts. Business logic is not munged with frontend state management concerns.
+- Component Library Monorepo is more viable. I could not figure out how to do this with collocated BFFs
 
 
 
